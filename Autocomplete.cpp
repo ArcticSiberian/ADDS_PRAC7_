@@ -11,6 +11,8 @@ void Autocomplete::insert(std::string word){
     TrieNode* current = root;
     int letters = word.length();
 
+    
+
     //loop through each letter of the word
     for(int i = 0; i < letters; i++){
 
@@ -19,7 +21,7 @@ void Autocomplete::insert(std::string word){
             current->children[word[i]-'a'] = new TrieNode();
 
             //print for debugging
-            std::cout<<word[i]-'a'<<std::endl;
+            //std::cout<<word[i]-'a'<<std::endl;
         }
 
         //move to next node
