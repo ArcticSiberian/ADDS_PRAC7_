@@ -43,6 +43,7 @@ int PrefixMatcher::selectRouter(std::string networkAddress){
     int router = -1;
     int i = 0;
 
+
     //loop through each number of the address
     while(i<number && current->children[networkAddress[i]-48] != nullptr){
 
@@ -56,8 +57,9 @@ int PrefixMatcher::selectRouter(std::string networkAddress){
         i++;
     }
 
+
     //go to the one with the longest match and check its router number
-    while(current->children[0] != nullptr || current->children[1] != nullptr){
+    while((current->children[0] != nullptr || current->children[1] != nullptr) && current->routerNum == -1){
 
         // conditions to go to the next number depending on which pointer is null
         if(current->children[0] == nullptr){
@@ -71,6 +73,8 @@ int PrefixMatcher::selectRouter(std::string networkAddress){
         }
     }
 
+    
+    
     //return the address
     return current->routerNum;
 
