@@ -21,7 +21,7 @@ void PrefixMatcher::insert(std::string address, int routerNumber){
             current->children[address[i]-48] = new TrieNode();
 
             //print for debugging
-            std::cout<<address[i]-48<<std::endl;
+            //std::cout<<address[i]-48<<std::endl;
         }
 
         //move to next node
