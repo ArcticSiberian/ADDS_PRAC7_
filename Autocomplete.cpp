@@ -21,7 +21,7 @@ void Autocomplete::insert(std::string word){
             current->children[word[i]-'a'] = new TrieNode();
 
             //print for debugging
-            //std::cout<<word[i]-'a'<<std::endl;
+            //std::cout<<word<<std::endl;
         }
 
         //move to next node
@@ -87,10 +87,17 @@ void Autocomplete::stillSearching(std::string word, std::vector<std::string>& co
 
         //if the children are not null pointer, add the letter to the word
         if(current->children[j] != nullptr){
+
             call.push_back(j+'a');
 
-            //recursively call search until the looping stops when it meets the conditons
+            //print for debugging
+            //std::cout<<call<<std::endl;
+
+            //recursively call search to search each branch of the trie if it is not null
             stillSearching(call, complete, current->children[j]);
+
+            //remove the last letter so as to avoid adding it to the word that'll be added to the vector
+            call.pop_back();
         }
 
         //increment j
